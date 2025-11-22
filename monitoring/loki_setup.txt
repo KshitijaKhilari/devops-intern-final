@@ -1,0 +1,13 @@
+To start Loki locally:
+docker run -d --name=loki -p 3100:3100 grafana/loki:2.9.0
+
+To view logs from a container:
+docker logs <container_id>
+
+To send logs to Loki:
+Use docker logging driver or Nomad logging with Loki driver.
+
+Example:
+docker run --log-driver=loki \
+  --log-opt loki-url="http://localhost:3100/loki/api/v1/push" \
+  devops-hello
