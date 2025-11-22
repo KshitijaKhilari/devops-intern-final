@@ -1,25 +1,26 @@
+**DevOps Intern Final Assessment**
+
 Name: Kshitija Sandip Khilari
 Date: 22 November 2025
 
-This repository contains the final DevOps workflow assessment, demonstrating Git, Linux scripting, Docker, CI/CD automation, Nomad workload deployment, and basic monitoring using Grafana Loki.
+This repository contains the complete DevOps Intern Final Assessment, demonstrating practical skills across Linux, Git, Docker, CI/CD, Nomad, and monitoring with Grafana Loki.
 
 1. Git & GitHub Setup
 
-A new public repository was created containing the project files.
-The repository includes:
+A public GitHub repository was created and initialized with:
+
+hello.py
 
 README.md
 
-hello.py — sample Python script:
+Proper folder structure for all components
 
+hello.py
 print("Hello, DevOps!")
-
-
-A first commit was made to initialize the repository.
 
 2. Linux Scripting
 
-A folder named scripts/ was created containing:
+Created a scripts/ directory containing:
 
 scripts/sysinfo.sh
 #!/bin/bash
@@ -32,29 +33,26 @@ date
 echo "Disk Usage:"
 df -h
 
-
-To make the script executable:
-
+Make executable
 chmod +x scripts/sysinfo.sh
 
-
-To run the script:
-
+Run script
 bash scripts/sysinfo.sh
 
 3. Docker Setup
 
-A Dockerfile was created in the project root:
+A Dockerfile was added to containerize the Python script.
 
+Dockerfile
 FROM python:3.10-slim
 WORKDIR /app
 COPY hello.py .
 CMD ["python", "hello.py"]
 
-Build the Docker image:
+Build image
 docker build -t devops-hello .
 
-Run the Docker container:
+Run container
 docker run devops-hello
 
 
@@ -62,7 +60,7 @@ This executes the Python script inside a container.
 
 4. GitHub Actions — CI Pipeline
 
-A workflow file was added under:
+A CI workflow was created under:
 
 .github/workflows/ci.yml
 
@@ -84,18 +82,14 @@ jobs:
     - name: Run Python Script
       run: python hello.py
 
-CI Status Badge
 
-Add this to the top of the README:
+This pipeline automatically runs the Python script on every push to main.
 
-![CI Status](https://github.com/YOUR_GITHUB_USERNAME/devops-intern-final/actions/workflows/ci.yml/badge.svg)
-
-
-This pipeline executes the Python script automatically on every push.
+A CI badge has been added at the top of this README.
 
 5. Nomad Job Deployment
 
-A folder named nomad/ was created containing the job file:
+A nomad/ folder was added with a job file to deploy the Docker container using Nomad.
 
 nomad/hello.nomad
 job "hello-service" {
@@ -118,20 +112,20 @@ job "hello-service" {
   }
 }
 
-Run the Nomad Job
+To run Nomad locally
 
-Start Nomad in dev mode:
+Start Nomad in development mode:
 
 nomad agent -dev
 
 
-Deploy the job:
+Run the job:
 
 nomad job run nomad/hello.nomad
 
 6. Monitoring with Grafana Loki
 
-A folder named monitoring/ was created containing:
+A folder named monitoring/ contains setup instructions.
 
 monitoring/loki_setup.txt
 To start Loki locally:
@@ -146,37 +140,39 @@ docker run --log-driver=loki \
   devops-hello
 
 
-A screenshot of log output may be included as needed.
+Loki listens on port 3100 and can receive logs from Docker containers or Nomad tasks.
+
+Optional screenshots may be added for documentation.
 
 Project Structure
 devops-intern-final/
-│── hello.py
-│── Dockerfile
-│── README.md
-│── scripts/
-│     └── sysinfo.sh
-│── nomad/
-│     └── hello.nomad
-│── monitoring/
-      └── loki_setup.txt
-│── .github/
-      └── workflows/
-             └── ci.yml
+├── hello.py
+├── Dockerfile
+├── README.md
+├── scripts/
+│   └── sysinfo.sh
+├── nomad/
+│   └── hello.nomad
+├── monitoring/
+│   └── loki_setup.txt
+└── .github/
+    └── workflows/
+        └── ci.yml
 
 Conclusion
 
-This project demonstrates an end-to-end DevOps workflow, covering:
+This assessment demonstrates:
 
-Version control with Git
+Git version control
 
 Linux shell scripting
 
-Containerization with Docker
+Docker containerization
 
-Automated CI using GitHub Actions
+CI Automation using GitHub Actions
 
-Application deployment with Nomad
+Workload deployment using Nomad
 
 Basic log monitoring using Loki
 
-The repository fulfills all requirements of the DevOps Intern Final Assessment.
+The project fulfills all requirements of the DevOps Intern Final Evaluation and represents a complete, functional DevOps workflow.
